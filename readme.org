@@ -1,0 +1,4 @@
++ Makefile: 适合C项目的Makefile
++ parent.mk: 适合放在repo的顶层目录
++ tpl.lua: lua文件的初始模板代码
++ log.py: python的日志设置代码
