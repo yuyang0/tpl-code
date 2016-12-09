@@ -71,6 +71,10 @@ class CustomLogger(object):
         detail_format = "%(asctime)s - [%(filename)s:%(lineno)s - %(funcName)10s() ]: %(levelname)-8s %(message)s"
         self.detail_formatter = logging.Formatter(detail_format)
 
+    def new_formatter(self, name, format_ss):
+        formatter = logging.Formatter(format_ss)
+        setattr(self, name, formatter)
+
     def _init_handlers(self):
         handler = logging.StreamHandler()
         handler.setLevel(logging.DEBUG)
@@ -99,6 +103,23 @@ class CustomLogger(object):
         handler.setLevel(logging.WARNING)
         handler.setFormatter(self.detail_formatter)
         self.error_file_handler = handler
+
+    # def new_handler(self, name, dic):
+    #     cls = dic.pop("class")
+    #     cls = eval(cls)
+
+    #     level = dic.pop("level")
+    #     level = self.to_level(level)
+
+    #     filters = dic.pop("filters", [])
+    #     formatter = dic.pop("formatter")
+
+    #     handler = cls(**dic)
+    #     handler.setLevel(level)
+    #     for ft in filters:
+    #         ft = eval(ft)
+    #         handler.addFilter(ft())
+    #     setattr(self, name, handler)
 
     def _init_root_logger(self):
         root_logger = logging.getLogger()
