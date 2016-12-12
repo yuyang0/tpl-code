@@ -226,7 +226,7 @@ def get_logger(name, log_level=logging.INFO, handlers=None):
     return inst.get_logger(name, log_level, handlers)
 
 
-def new_formamtter(formatter_name, formater_ss):
+def new_formatter(formatter_name, formater_ss):
     inst = CustomLogger.instance()
     inst.new_formatter(formatter_name, formater_ss)
 
